@@ -21,5 +21,5 @@ app.use('/menu', menuItemRoutes);
   
 const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
-    console.log(`listening on port ${port}`)
+    console.log(`listening on port ${PORT}`)
   })
