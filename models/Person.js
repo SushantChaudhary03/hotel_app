@@ -18,7 +18,7 @@ const personSchema = new mongoose.Schema({
     work: {
         type: String,
         require: true,
-        enum: ["chef", 'manager', "waiter"]
+        enum: ["chef", "manager", "waiter"]
     },
     username: {
         type: String,
@@ -39,10 +39,10 @@ personSchema.pre('save', async function (next) {
         const salt = await bcrypt.genSalt(10);
 
         // generate hash password
-        const hashedPassword = bcrypt.hash(person.password, salt);
+        const hashedPassword = await bcrypt.hash(person.password, salt);
         person.password = hashedPassword;
-
         next();
+
     } catch (err) {
         return next(err);
     }
